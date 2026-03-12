@@ -1,0 +1,149 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(91, 0, 111);
+}
+
+@keyframes pulso {
+  from { transform: scale(1.05); filter: drop-shadow(0 0 8px cyan); }
+  to   { transform: scale(1.12); filter: drop-shadow(0 0 20px cyan); }
+}
+
+@keyframes balanceo {
+  from { transform: scale(1.05) rotate(-4deg); }
+  to   { transform: scale(1.05) rotate(4deg); }
+}
+
+@keyframes slash {
+  0%   { transform: scale(1.05) translateX(0) rotate(0deg); filter: drop-shadow(0 0 5px white); }
+  25%  { transform: scale(1.08) translateX(-6px) rotate(-5deg); filter: drop-shadow(-4px 0 8px rgba(255,255,255,0.8)); }
+  50%  { transform: scale(1.1) translateX(6px) rotate(3deg); filter: drop-shadow(4px 0 8px rgba(255,255,255,0.8)); }
+  75%  { transform: scale(1.08) translateX(-3px) rotate(-2deg); }
+  100% { transform: scale(1.05) translateX(0) rotate(0deg); filter: drop-shadow(0 0 5px white); }
+}
+
+@keyframes magia {
+  0%   { transform: scale(1.05) rotate(0deg);   filter: drop-shadow(0 0 8px violet); }
+  33%  { transform: scale(1.1) rotate(3deg);    filter: drop-shadow(0 0 15px cyan); }
+  66%  { transform: scale(1.08) rotate(-3deg);  filter: drop-shadow(0 0 15px magenta); }
+  100% { transform: scale(1.05) rotate(0deg);   filter: drop-shadow(0 0 8px violet); }
+}
+
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 40px;
+  justify-content: space-between;
+
+
+  .tarjeta {
+    max-width: 300px;
+    background: rgb(239, 204, 247);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    transition: 0.3s ease all;
+
+    &:hover {
+      transform: translate(20px, 10px);
+      box-shadow: -6px -2px 20px 5px rgba(178, 200, 70, 0.5);
+
+      .nombre {
+        color: white;
+        text-shadow: 1px 1px 0 rgb(120, 0, 80),
+              -1px 1px 0 rgb(120, 0, 80),
+              1px -1px 0 rgb(120, 0, 80),
+              -1px -1px 0 rgb(120, 0, 80);
+      }
+
+      .descripcion {
+        color: rgb(255, 250, 215);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+      }
+
+      .habilidad {
+        background: whitesmoke;
+        color: rgb(125, 9, 121);
+      }
+
+      .avatar img {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+      }
+
+    }
+
+    &.aventurero:hover {
+      background: rgba(120, 171, 0, 0.768);
+      animation: pulso 1s ease-in-out infinite alternate;
+    }
+
+    &.ninja:hover {
+      background: rgba(24, 24, 24, 0.794);
+      animation: slash 0.6s ease-in-out infinite;
+    }
+  
+    &.hechicero:hover {
+      background: rgba(4, 121, 216, 0.794);
+      animation: magia 2s ease-in-out infinite;
+    }
+
+
+    &.pirata:hover {
+      background: rgba(255, 154, 13, 0.794);
+      animation: balanceo 0.8s ease-in-out infinite alternate;
+    }
+
+    .avatar {
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar img {
+      max-width: 200px;
+      border-radius: 1000px;
+      transition: 0.6s ease all;
+    }
+
+    .nombre {
+      margin-top: 5px;
+      display: flex;
+      justify-content: center;
+      color: rgb(52, 0, 64);
+      font-family: "MedievalSharp", cursive;
+      transition: 0.4s ease all;
+    }
+
+    .descripcion {
+      font-size: 16px;
+      color: rgb(60, 4, 58);
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      transition: 0.4s ease all;
+    }
+
+    .habilidades {
+      font-family: "MedievalSharp", cursive;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+  
+      .habilidad {
+        display: flex;
+        padding: 8px;
+        border: 1px solid rgb(153, 0, 187);
+        justify-content: center;
+
+      }
+
+    }
+  }
+}
